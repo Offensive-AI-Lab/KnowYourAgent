@@ -1,0 +1,18 @@
+TopicAttack baseline — third-party code
+=======================================
+
+The directory `topicattack-main/` vendors the reference implementation of:
+
+    TopicAttack: An Indirect Prompt Injection Attack via Topic Transition
+    (EMNLP 2025).  https://arxiv.org/pdf/2507.13686
+
+It is included here only to reproduce the TopicAttack comparison row of the
+paper. All credit for that code belongs to its original authors, and it
+remains under whatever license the upstream project grants. The files under
+`run_topicattack_with_defense.py`, `run_defense_comparison.py`,
+`run_all_suites_with_defense.sh`, and the `*.md` guides in this directory are
+the adaptation glue written for this project (MIT, as the repository root).
+
+If you redistribute this repository, confirm the upstream TopicAttack license
+permits it; otherwise replace `topicattack-main/` with a clone of the upstream
+repository at run time.

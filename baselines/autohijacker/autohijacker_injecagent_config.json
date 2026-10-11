@@ -1,0 +1,12 @@
+{
+  "test": {
+    "llm_model": "gpt-4.1-2025-04-14",
+    "target_model": "gpt-4.1-2025-04-14",
+    "memory_file": "Baselines/AutoHijacker/attack_memory.json",
+    "output_dir": "runs/autohijacker_injecagent",
+    "setting": "enhanced",
+    "suites": ["dh", "ds"],
+    "data_dir": "Benchmarks/injecagent/data",
+    "num_workers": 10
+  }
+}

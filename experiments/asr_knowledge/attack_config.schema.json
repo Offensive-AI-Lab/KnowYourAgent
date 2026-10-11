@@ -1,0 +1,144 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Attack Configuration",
+  "description": "Configuration for the ASR knowledge-correlation experiment. Specifies which knowledge assets to include, the target/attacker models, an optional defense, and the (suite, injection_task, user_task) triplets to evaluate.",
+  "type": "object",
+  "required": ["knowledge_pieces", "triplets"],
+  "properties": {
+    "attacker_model": {
+      "type": "string",
+      "description": "LiteLLM model string for the attacker LLM that generates payloads (e.g. 'gpt-4o-2024-05-13')."
+    },
+    "target_model": {
+      "type": "string",
+      "description": "LiteLLM model string for the target agent under attack (e.g. 'gpt-4o-2024-05-13')."
+    },
+    "defense": {
+      "type": ["string", "null"],
+      "description": "AgentDojo defense name to activate on the target agent, or null for no defense (e.g. 'repeat_user_prompt', 'spotlighting_with_delimiting')."
+    },
+    "knowledge_pieces": {
+      "type": "object",
+      "description": "Toggle which knowledge assets are included when constructing the attacker's knowledge context. Both legacy (5-piece) and new fine-grained (14-asset) IDs are supported.",
+      "properties": {
+        "operational_rules": {
+          "type": "boolean",
+          "description": "[Legacy] Include operational rules / system-level instructions of the target agent."
+        },
+        "tools_information": {
+          "type": "boolean",
+          "description": "[Legacy] Include tool descriptions and parameter schemas available to the target agent."
+        },
+        "tool_output": {
+          "type": "boolean",
+          "description": "[Legacy] Include the raw tool output context (with injection placeholder) seen by the target agent."
+        },
+        "benign_response": {
+          "type": "boolean",
+          "description": "Include a sample benign response the target agent would typically produce."
+        },
+        "security_guardrails": {
+          "type": "boolean",
+          "description": "[Legacy] Include details about security guardrails or safety filters applied by the target agent."
+        },
+        "tool_names_and_parameters": {
+          "type": "boolean",
+          "description": "Include the exact names and short descriptions of all tools available to the target agent."
+        },
+        "tool_call_schema": {
+          "type": "boolean",
+          "description": "Include the full JSON argument schemas for each tool, including key names and types."
+        },
+        "filters": {
+          "type": "boolean",
+          "description": "Include information about content-filtering rules that govern what the agent will or will not share."
+        },
+        "exception_schema": {
+          "type": "boolean",
+          "description": "Include the format of error/exception messages that the agent receives from failed tool calls."
+        },
+        "behavioral_rules": {
+          "type": "boolean",
+          "description": "Include the agent's system prompt / operational rules as exactly as possible."
+        },
+        "type_of_agent": {
+          "type": "boolean",
+          "description": "Include a high-level description of the agent's domain and job function."
+        },
+        "model_identity": {
+          "type": "boolean",
+          "description": "Include the identity of the underlying LLM powering the target agent."
+        },
+        "guardrails": {
+          "type": "boolean",
+          "description": "Include the security-specific constraints and prohibitions extracted from the system prompt."
+        },
+        "user_persona": {
+          "type": "boolean",
+          "description": "Include background details about the user interacting with the agent (name, role, company, etc.)."
+        },
+        "agent_task": {
+          "type": "boolean",
+          "description": "Include the specific task the agent is currently trying to accomplish for the user."
+        },
+        "injected_tool_output": {
+          "type": "boolean",
+          "description": "Include the tool output(s) where the injection will land, with <<INJECTION_PLACEHOLDER>> marking the exact insertion point."
+        },
+        "structural_defenses": {
+          "type": "boolean",
+          "description": "Include details about conversation-level structural defenses (e.g. delimiter wrapping, user-prompt repetition)."
+        },
+        "conversation_structure": {
+          "type": "boolean",
+          "description": "Include a description of how the agent sees its own context window (message roles, ordering, tool call format)."
+        },
+        "defenses": {
+          "type": "boolean",
+          "description": "Combined asset: conversation structure + active defense mechanism and bypass hints in a single section."
+        }
+      },
+      "additionalProperties": false
+    },
+    "triplets": {
+      "type": "array",
+      "description": "List of (suite, injection_task_id, user_task_id) triplets to run the experiment against.",
+      "items": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "minItems": 3,
+        "maxItems": 3,
+        "description": "A triplet of [suite_name, injection_task_id, user_task_id]. E.g. [\"banking\", \"injection_task_0\", \"user_task_0\"]."
+      }
+    }
+  },
+  "examples": [
+    {
+      "attacker_model": "gpt-4o-2024-05-13",
+      "target_model": "gpt-4o-2024-05-13",
+      "defense": null,
+      "knowledge_pieces": {
+        "tool_names_and_parameters": true,
+        "behavioral_rules": true,
+        "injected_tool_output": true,
+        "tool_call_schema": false,
+        "filters": false,
+        "benign_response": false,
+        "exception_schema": false,
+        "type_of_agent": false,
+        "model_identity": false,
+        "guardrails": false,
+        "user_persona": false,
+        "agent_task": false,
+        "structural_defenses": false,
+        "conversation_structure": false
+      },
+      "triplets": [
+        ["banking", "injection_task_0", "user_task_0"],
+        ["banking", "injection_task_1", "user_task_0"]
+      ]
+    }
+  ]
+}

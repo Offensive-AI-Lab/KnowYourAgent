@@ -1,0 +1,27 @@
+{
+  "attacker_model": "gpt-4o-2024-05-13",
+  "target_model": "gpt-4o-2024-05-13",
+  "defense": null,
+  "knowledge_pieces": {
+    "tool_names_and_parameters": true,
+    "tool_call_schema": true,
+    "filters": true,
+    "benign_response": true,
+    "exception_schema": true,
+    "behavioral_rules": true,
+    "type_of_agent": true,
+    "model_identity": true,
+    "guardrails": true,
+    "user_persona": true,
+    "agent_task": true,
+    "injected_tool_output": true,
+    "structural_defenses": true,
+    "conversation_structure": true
+  },
+  "triplets": [
+    ["banking", "injection_task_0", "user_task_0"],
+    ["banking", "injection_task_0", "user_task_1"],
+    ["banking", "injection_task_1", "user_task_0"],
+    ["banking", "injection_task_1", "user_task_1"]
+  ]
+}

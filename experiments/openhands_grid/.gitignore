@@ -1,0 +1,4 @@
+# Run outputs are large; ignore by default. The one historical run committed
+# before this rule (cobra_openhands_20260516_182456) stays tracked. Force-add a
+# new run dir if you want it in git.
+results/

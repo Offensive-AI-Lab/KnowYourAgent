@@ -1,0 +1,22 @@
+{
+  "recon_model": "gpt-5",
+  "target_model": "gpt-4.1-2025-04-14",
+  "judge_model": "gpt-4.1-2025-04-14",
+  "system_message_name": null,
+  "requirements": [
+    "tool_names_and_parameters",
+    "guardrails",
+    "structural_defenses",
+    "behavioral_rules",
+    "model_identity",
+    "type_of_agent"
+  ],
+  "requirement_defenses": {
+    "structural_defenses": "spotlighting_with_delimiting"
+  },
+  "output_dir": "ReconSuccessExperiment/results/example_smoke_test",
+  "cases": [
+    {"suite": "banking", "user_task": "user_task_0", "injection_task": "injection_task_0"},
+    {"suite": "slack", "user_task": "user_task_0", "injection_task": "injection_task_1"}
+  ]
+}

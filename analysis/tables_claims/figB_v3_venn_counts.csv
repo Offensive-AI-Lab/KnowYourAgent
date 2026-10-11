@@ -1,0 +1,9 @@
+region,meaning,count,pct_of_cracked
+100,needs both modules,169,31.07
+010,regression (Full failed),31,5.7
+110,recon alone suffices,187,34.38
+001,regression (Full failed),3,0.55
+101,tactics alone suffices,23,4.23
+011,regression (Full failed),6,1.1
+111,easy (all variants crack),125,22.98
+000,impregnable,76,

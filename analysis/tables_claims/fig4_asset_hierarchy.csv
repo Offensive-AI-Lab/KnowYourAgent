@@ -1,0 +1,17 @@
+knowledge_set,defense,mean,sem,count
+agent_task,no_defense,0.44284147869674184,0.13807957393483716,2
+behavioral_rules,no_defense,-0.0746031746031746,0.02941162923471535,4
+behavioral_rules,repeat_user_prompt,0.06815578465063002,,1
+benign_response,no_defense,-0.018303571428571433,0.029560204421969615,4
+benign_response,repeat_user_prompt,0.041534391534391535,0.030374932828397597,3
+defenses,no_defense,0.0010022909507445554,,1
+defenses,repeat_user_prompt,0.10939289805269187,,1
+injected_tool_output,no_defense,0.026864035087719285,0.09353070175438596,2
+model_identity,no_defense,0.024899053188526876,0.0985881418786296,3
+model_identity,repeat_user_prompt,0.006300114547537233,,1
+tool_names_and_parameters,no_defense,0.14290674603174602,0.0638759668794006,4
+tool_names_and_parameters,repeat_user_prompt,0.026918671248568157,,1
+type_of_agent,no_defense,0.06978982951205172,0.1240960228877906,3
+type_of_agent,repeat_user_prompt,0.037227949599083626,,1
+user_persona,no_defense,0.06520989974937341,0.16044799498746865,2
+user_persona,repeat_user_prompt,0.026918671248568157,,1

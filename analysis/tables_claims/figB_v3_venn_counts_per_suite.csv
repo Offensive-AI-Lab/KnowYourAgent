@@ -1,0 +1,33 @@
+suite,region,meaning,count
+banking,100,needs both modules,28
+banking,010,regression (Full failed),8
+banking,110,recon alone suffices,50
+banking,001,regression (Full failed),1
+banking,101,tactics alone suffices,4
+banking,011,regression (Full failed),3
+banking,111,easy (all variants crack),32
+banking,000,impregnable,9
+slack,100,needs both modules,10
+slack,010,regression (Full failed),3
+slack,110,recon alone suffices,38
+slack,001,regression (Full failed),0
+slack,101,tactics alone suffices,6
+slack,011,regression (Full failed),1
+slack,111,easy (all variants crack),46
+slack,000,impregnable,1
+travel,100,needs both modules,49
+travel,010,regression (Full failed),4
+travel,110,recon alone suffices,21
+travel,001,regression (Full failed),1
+travel,101,tactics alone suffices,7
+travel,011,regression (Full failed),2
+travel,111,easy (all variants crack),22
+travel,000,impregnable,34
+workspace,100,needs both modules,82
+workspace,010,regression (Full failed),16
+workspace,110,recon alone suffices,78
+workspace,001,regression (Full failed),1
+workspace,101,tactics alone suffices,6
+workspace,011,regression (Full failed),0
+workspace,111,easy (all variants crack),25
+workspace,000,impregnable,32

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog</title>
+    <style>
+        body { font-family: 'Segoe UI', Arial, sans-serif; margin: 0; background: #f5f5f5; color: #333; }
+        nav { background: #2c3e50; padding: 14px 24px; display: flex; gap: 20px; align-items: center; }
+        nav a { color: #ecf0f1; text-decoration: none; font-weight: 600; }
+        nav a.active, nav a:hover { color: #1abc9c; }
+        .badge { background: #1abc9c; color: white; border-radius: 12px; padding: 2px 9px; font-size: 12px; margin-left: 6px; }
+        .container { max-width: 760px; margin: 32px auto; padding: 0 16px; }
+        .search-bar { display: flex; gap: 8px; margin-bottom: 24px; }
+        .search-bar input { flex: 1; padding: 9px 14px; border: 1px solid #ccc; border-radius: 6px; font-size: 15px; }
+        .search-bar button { padding: 9px 20px; background: #2c3e50; color: white; border: none; border-radius: 6px; cursor: pointer; }
+        article { background: white; border-radius: 8px; padding: 22px 26px; margin-bottom: 18px; box-shadow: 0 2px 6px rgba(0,0,0,.07); }
+        article h2 { margin: 0 0 10px; font-size: 1.25rem; }
+        article p { margin: 0; color: #555; line-height: 1.6; }
+        .empty-state { text-align: center; color: #999; padding: 40px 0; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/" class="active">Home</a>
+        <a href="/about">About</a>
+        {% if total is defined %}
+        <span class="badge">{{ total }} posts</span>
+        {% endif %}
+    </nav>
+
+    <div class="container">
+        <!-- Search bar -->
+        <form class="search-bar" method="get" action="/search">
+            <input
+                type="text"
+                name="q"
+                placeholder="Search posts..."
+                value="{{ query if query else '' }}"
+                aria-label="Search"
+            >
+            <button type="submit">Search</button>
+        </form>
+
+        <!-- Post list -->
+        {% if posts %}
+            {% for post in posts %}
+            <article>
+                <h2>{{ post.title }}</h2>
+                <p>{{ post.body }}</p>
+            </article>
+            {% endfor %}
+        {% else %}
+            <div class="empty-state">
+                <p>No posts found{% if query %} for &ldquo;{{ query }}&rdquo;{% endif %}.</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

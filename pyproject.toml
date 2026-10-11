@@ -1,0 +1,58 @@
+[project]
+name = "kya"
+version = "1.0.0"
+description = "KYA (Know Your Agent): reconnaissance-driven, adaptive pentesting of AI agents."
+readme = "README.md"
+requires-python = ">=3.11,<3.13"
+license = { text = "MIT" }
+authors = [{ name = "Or Eliav" }]
+
+# Pinned to the versions used for the paper's experiments (Python 3.11).
+dependencies = [
+    # KYA crew (CrewAI multi-agent framework + OpenAI-compatible backend)
+    "crewai==0.100.0",
+    "crewai-tools==0.37.0",
+    "langchain-openai==0.2.14",
+    "litellm==1.80.11",
+    "python-dotenv>=1.0",
+    # AgentDojo benchmark (vendored under benchmarks/agentdojo, imported via sys.path)
+    "openai>=1.59.7",
+    "pydantic[email]>=2.7.1",
+    "docstring-parser>=0.15",
+    "tenacity>=8.2.3",
+    "langchain>=0.3",
+    "anthropic>=0.47.0",
+    "cohere>=5.3.4",
+    "google-genai>=1.0",
+    "pyyaml>=6.0.1",
+    "click>=8.1.7",
+    "deepdiff>=7.0.1",
+    "rich>=13.7.1",
+    # InjecAgent benchmark
+    "nltk>=3.9",
+    "tqdm>=4.67",
+    # Analysis / figures (Data/analysis)
+    "pandas>=2.2",
+    "numpy>=1.26,<2.3",
+    "pyarrow>=19",
+    "matplotlib>=3.9",
+    "matplotlib-venn>=1.1",
+    "seaborn>=0.13",
+    "scipy>=1.14",
+    "scikit-learn>=1.5",
+    "squarify>=0.4",
+    "tabulate>=0.9",
+    "openpyxl>=3.1",
+]
+
+[project.optional-dependencies]
+# DeBERTa prompt-injection detector defense (GPU recommended).
+pi-detector = ["transformers>=4.41.2", "torch>=2.2.1"]
+# TogetherAI-hosted target models for InjecAgent.
+together = ["together>=2.8"]
+
+[tool.uv]
+package = false
+
+[tool.setuptools]
+py-modules = []

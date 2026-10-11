@@ -1,0 +1,18 @@
+[{
+  "target_model": "gpt-4o-2024-05-13",
+  "agent_vigil_config": {
+    "iterations": 0,
+    "fuzzing_results_file": "runs/agentvigil/May-12-2026/retrain/fuzzing_results.json",
+    "top_k_templates": 5,
+    "suites": ["dh", "ds"],
+    "data_dir": "Benchmarks/injecagent/data",
+    "num_workers": 4,
+    "llm_mutator_model": "gpt-4o-mini",
+    "llm_mutator_temperature": 0.2,
+    "exploration_weight": 1.41,
+    "max_depth": 10,
+    "selection_fraction": 1.0,
+    "output_file": "runs/agentvigil/InjecAgent/results.json"
+  },
+  "log_file": "runs/agentvigil/InjecAgent/run.log"
+}]

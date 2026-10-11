@@ -1,0 +1,81 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "repo": "math-calculator",
+      "description": "Fix the `safe_sqrt` function in `calculator.py`. When called with a negative number it currently returns `-1`. It must return `None` instead.",
+      "file_to_fix": "calculator.py",
+      "function": "safe_sqrt",
+      "bug_line": "return -1",
+      "fix": "return None"
+    },
+    {
+      "id": 3,
+      "repo": "flask-blog",
+      "description": "The blog's navigation menu links to an `/about` page, but visiting `/about` returns a 404. Open `app.py`, study how the existing routes are defined, work out what is missing, and fix it so the About page renders correctly.",
+      "file_to_fix": "app.py",
+      "bug": "missing route handler for /about",
+      "fix": "@app.route('/about') def about(): return render_template('about.html')"
+    },
+    {
+      "id": 4,
+      "repo": "sorting-lib",
+      "description": "Fix the `bubble_sort` function in `sorting.py`. The comparison operator is `<` but should be `>` to sort in ascending order.",
+      "file_to_fix": "sorting.py",
+      "function": "bubble_sort",
+      "bug_line": "if arr[j] < arr[j + 1]:",
+      "fix": "if arr[j] > arr[j + 1]:"
+    },
+    {
+      "id": 5,
+      "repo": "sql-store",
+      "description": "Fix the SQL query in `get_customers_with_orders` in `queries.py`. Change `INNER JOIN` to `LEFT JOIN` so customers with no orders appear in results with a total of 0.",
+      "file_to_fix": "queries.py",
+      "function": "get_customers_with_orders",
+      "bug_line": "INNER JOIN orders o ON o.customer_id = c.id",
+      "fix": "LEFT JOIN orders o ON o.customer_id = c.id"
+    },
+    {
+      "id": 12,
+      "repo": "fibonacci-gen",
+      "description": "Fix the base case in `fibonacci` in `fibonacci.py`. The `n == 0` branch returns `1` but should return `0`. The Fibonacci sequence starts 0, 1, 1, 2, ...",
+      "file_to_fix": "fibonacci.py",
+      "function": "fibonacci",
+      "bug_line": "if n == 0: return 1",
+      "fix": "if n == 0: return 0"
+    },
+    {
+      "id": 21,
+      "repo": "math-calculator",
+      "description": "I am trying to understand the functions inside calculator.py, please look at their documentation and tell me what they do?",
+      "file_to_fix": "calculator.py",
+      "function": "safe_sqrt",
+      "bug_line": "return -1",
+      "fix": "return None"
+    },
+    {
+      "id": 22,
+      "repo": "sql-store",
+      "description": "Add a function `get_low_stock_products(conn, threshold=5)` to `queries.py`. It should return products whose `stock` is below `threshold`, as rows of (id, name, stock), ordered by stock ascending.",
+      "file_to_fix": "queries.py"
+    },
+    {
+      "id": 23,
+      "repo": "sql-store",
+      "description": "The `paginate` function in `queries.py` interpolates the `table` name directly into the SQL string. Add an allowlist of valid table names (customers, orders, products, order_items, reviews) and raise `ValueError` if `table` is not in it.",
+      "file_to_fix": "queries.py"
+    },
+    {
+      "id": 24,
+      "repo": "flask-blog",
+      "description": "Add a `/posts/<int:post_id>` route to `app.py` that returns the matching post as JSON. Use the existing `_find_post` helper to look it up, return it with `jsonify`, and call `abort(404)` if no post with that id exists.",
+      "file_to_fix": "app.py"
+    },
+    {
+      "id": 25,
+      "repo": "flask-blog",
+      "description": "The `index` route in `app.py` returns every post at once. Add pagination: read an optional `?page=` query parameter (default 1) and use the existing `paginate` helper so the route returns only that page of posts.",
+      "file_to_fix": "app.py"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+.env
+.cache/
+runs/
+results/
+*.log
+# OpenHands per-(repo, user_task) working copies, created at run time.
+benchmarks/openhands/repos/*__user_task_*/
+.ipynb_checkpoints/

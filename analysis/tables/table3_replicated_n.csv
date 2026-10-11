@@ -1,0 +1,8 @@
+attack,none,transformers_pi_detector,repeat_user_prompt,spotlighting_with_delimiting
+ignorprev,629.0,1258.0,629.0,629.0
+topicattack,,563.0,644.0,649.0
+chatinject,629.0,629.0,629.0,629.0
+agentvigil,487.0,,,
+cobra_full,3779.0,,1196.0,950.0
+asr_knowledge,,,1894.0,
+cobra_ablate,3586.0,,,
