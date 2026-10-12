@@ -13,7 +13,8 @@ event-00000 (the SystemPromptEvent) is copied verbatim. api.py's init_chat()
 will later resume from this fresh state and run the user prompt against the
 agent.
 
-Idempotent: skips repos already recorded in pipeline/conversation_ids.json.
+Idempotent: skips (user_task, repo) pairs already recorded in this directory's
+conversation_ids.json *whose conversation directory still exists* locally.
 
 Usage:
   python -m benchmarks.openhands.bootstrap                          # all 20
@@ -60,7 +61,16 @@ def save_sidecar(entries: List[Dict]) -> None:
 
 
 def already_bootstrapped(entries: List[Dict], user_task: str, repo: str) -> bool:
-    return any(e["user_task"] == user_task and e["repo"] == repo for e in entries)
+    """True only if the sidecar has this (user_task, repo) *and* its conversation
+    directory actually exists. The sidecar is committed to the repo for reference,
+    but the referenced ~/.openhands conversation directories are per-machine state
+    and are never shipped -- trusting the sidecar alone would silently skip
+    bootstrapping on a fresh machine and leave a dangling, non-existent conversation id.
+    """
+    for e in entries:
+        if e["user_task"] == user_task and e["repo"] == repo:
+            return (OH_HOME / e["conversation_id"]).is_dir()
+    return False
 
 
 def reset_repo(repo: str) -> None:

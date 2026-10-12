@@ -13,10 +13,10 @@ dependencies = [
     "crewai==0.100.0",
     "crewai-tools==0.37.0",
     "langchain-openai==0.2.14",
-    "litellm==1.80.11",
     "python-dotenv>=1.0",
     # AgentDojo benchmark (vendored under benchmarks/agentdojo, imported via sys.path)
     "openai>=1.59.7",
+    "flask>=3.0",  # its REST API server (baselines/topicattack prerequisite)
     "pydantic[email]>=2.7.1",
     "docstring-parser>=0.15",
     "tenacity>=8.2.3",

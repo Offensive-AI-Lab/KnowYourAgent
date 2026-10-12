@@ -8,4 +8,7 @@ results/
 *.log
 # OpenHands per-(repo, user_task) working copies, created at run time.
 benchmarks/openhands/repos/*__user_task_*/
+# Per-machine cache of local ~/.openhands conversation ids (bootstrap.py creates
+# this on first run); never meaningful across machines, so don't track it.
+benchmarks/openhands/conversation_ids.json
 .ipynb_checkpoints/

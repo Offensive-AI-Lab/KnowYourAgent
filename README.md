@@ -91,13 +91,29 @@ python -m kya.run_injecagent -c configs/injecagent/smoke.json -o runs/injecagent
 ### OpenHands (a coding agent on small Git repos)
 
 OpenHands needs the `openhands` CLI installed and one conversation registered per repo
-task (a one-time bootstrap):
+task (a one-time bootstrap).
+
+> **`openhands-ai` requires Python ≥3.12**, which conflicts with this repo's own
+> Python-3.11 venv above. Install it into a *second*, separate venv and put that venv's
+> `bin/` on `PATH` for the commands below — don't try to add it to the Python-3.11 venv.
+>
+> ```bash
+> uv venv --python 3.12 .venv-openhands
+> uv pip install --python .venv-openhands/bin/python openhands-ai
+> export PATH="$PWD/.venv-openhands/bin:$PATH"   # so `openhands` and `bootstrap` can find the CLI
+> ```
 
 ```bash
-pip install openhands-ai                       # the target agent
 python -m benchmarks.openhands.bootstrap       # register conversations (writes to ~/.openhands)
 python -m kya.run_openhands -c configs/openhands/smoke.json -o runs/openhands_smoke
 ```
+
+`bootstrap.py` works by *cloning* an existing OpenHands conversation per repo, not by
+creating one from scratch — `openhands --headless` refuses to start a new conversation
+without interactive settings. If `~/.openhands/conversations/` is completely empty (a
+genuinely fresh machine), first seed **one** conversation for any task by running
+`openhands` interactively once against any repo under `benchmarks/openhands/repos/`;
+`bootstrap.py` will then clone it as the template for the rest.
 
 ### Common options
 
