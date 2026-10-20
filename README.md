@@ -208,9 +208,11 @@ OpenRouter — set `OPENROUTER_API_KEY` and use an OpenRouter model id.
 ## Citing
 
 If you use this code, please cite our paper:
-`@inproceedings{eliav2026know,
+```
+@inproceedings{eliav2026know,
   title     = {Know Your Agent: Reconnaissance-Driven Pentesting of {AI} Agents},
   author    = {Eliav, Or Zion and Lenga, Eyal and Bernstein, Shir and Mirsky, Yisroel},
   booktitle = {Annual Computer Security Applications Conference (ACSAC)},
   year      = {2026}
-}`
+}
+```
